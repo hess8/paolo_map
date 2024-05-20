@@ -1,15 +1,16 @@
 from django.contrib.gis import admin
-from .models import Marker
+from .models import Location
 #
-# @admin.register(Marker)
-# class MarkerAdmin(admin.GISModelAdmin):
-#     list_display = ("name", "location")
-
-from leaflet.admin import LeafletGeoAdmin
-
-@admin.register(Marker)
-class MarkerAdmin(LeafletGeoAdmin):
+@admin.register(Location)
+class MarkerAdmin(admin.GISModelAdmin):
     list_display = ("name", "location")
 
-
-# from django.contrib import admin
+# from leaflet.admin import LeafletGeoAdmin
+#
+#
+# # @admin.register(Location)
+# # class MarkerAdmin(LeafletGeoAdmin):
+# #     list_display = ("name", "location")
+#
+# admin.site.register(Location, LeafletGeoAdmin)
+# # from django.contrib import admin

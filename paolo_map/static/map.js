@@ -1,6 +1,9 @@
+const copy =
+  "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>";
+
 const url =
-'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}'
-//  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+//'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}'
+  "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 const layer = L.tileLayer(url, {
   attribution: copy,
 });
@@ -19,7 +22,7 @@ map
   );
 
 async function load_markers() {
-  const markers_url = `/api/markers/?in_bbox=${map
+  const markers_url = `/api/locations/?in_bbox=${map
     .getBounds()
     .toBBoxString()}`;
   const response = await fetch(

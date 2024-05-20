@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "paolo_map",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.gis",
-    "paolo_map",
+
 ]
 
 
@@ -62,7 +63,9 @@ ROOT_URLCONF = 'paolo_map.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'soardataApp','templates'),
+        'DIRS': [os.path.join(BASE_DIR,'paolo_map','templates'),
+            '/home/bret/paolo_map/.venv/lib/python3.10/site-packages/leaflet/templates/'
+                # os.path.join(BASE_DIR,'.venv/lib/python3.10/site-packages/leaflet/templates/')
                 ],
         'APP_DIRS': True,
         'OPTIONS': {

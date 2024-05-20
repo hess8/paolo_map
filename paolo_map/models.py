@@ -1,7 +1,7 @@
 from django.contrib.gis.db import models
 
 
-class Marker(models.Model):
+class Location(models.Model):
     name = models.CharField(
         max_length=255
     )

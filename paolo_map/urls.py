@@ -24,5 +24,5 @@ urlpatterns = [
         "api/", include("paolo_map.api")
     ),
     path('admin/', admin.site.urls),
-    path("markers/", include("markers.urls")),
+    # path("markers/", include("markers.urls")),
 ]
