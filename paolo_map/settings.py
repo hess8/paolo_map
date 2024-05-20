@@ -37,6 +37,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "paolo_map",
+    # "markers",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -44,6 +45,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "django.contrib.gis",
+    "rest_framework",
+    "rest_framework_gis",
 
 ]
 

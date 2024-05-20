@@ -23,6 +23,6 @@ urlpatterns = [
     path(
         "api/", include("paolo_map.api")
     ),
-    path('admin/', admin.site.urls),
-    # path("markers/", include("markers.urls")),
+    path('admin/', admin.site.urls)
+    #don't put in path for "markers"...the tutorial uses 2 apps, not one.
 ]
