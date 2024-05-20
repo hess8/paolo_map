@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from rest_framework_gis import filters
 
-from .models import Location
+from .models import Marker
 from .serializers import (
     MarkerSerializer,
 )
@@ -14,5 +14,5 @@ class MarkerViewSet(
     filter_backends = (
         filters.InBBoxFilter,
     )
-    queryset = Location.objects.all()
+    queryset = Marker.objects.all()
     serializer_class = MarkerSerializer

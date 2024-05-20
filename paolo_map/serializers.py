@@ -2,7 +2,7 @@ from rest_framework_gis.serializers import (
     GeoFeatureModelSerializer,
 )
 
-from .models import Location
+from .models import Marker
 
 
 class MarkerSerializer(
@@ -11,4 +11,4 @@ class MarkerSerializer(
     class Meta:
         fields = ("id", "name")
         geo_field = "location"
-        model = Location
+        model = Marker
