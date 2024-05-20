@@ -38,7 +38,7 @@ async function render_markers() {
   L.geoJSON(markers)
     .bindPopup(
       (layer) =>
-        layer.feature.properties.name
+        layer.feature.properties.size
     )
     .addTo(map);
 }
