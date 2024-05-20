@@ -2,10 +2,8 @@ from django.contrib.gis.db import models
 
 
 class Marker(models.Model):
-    name = models.CharField(
-        max_length=255
-    )
+    size = models.IntegerField()
     location = models.PointField()
 
-    def __str__(self):
-        return self.name
+    class Meta:
+        db_table = 'marker'
