@@ -35,12 +35,83 @@ async function load_markers() {
 
 async function render_markers() {
   const markers = await load_markers();
-  L.geoJSON(markers)
-    .bindPopup(
-      (layer) =>
-        layer.feature.properties.size
-    )
-    .addTo(map);
-}
+
+  const circleOptions =
+    {
+      radius: feature.properties.size,
+      color: "red",
+      weight: 7,
+      opacity: 1,
+      fillOpacity: 0.7,
+    };
+
+  const circle_marker = function (feature, latlng) {
+    if (feature.properties.type === "Point")
+      {
+       return L.circleMarker(latlng, circleOptions)
+      }
+      }
+    L.geoJSON(markers,circle_marker)
+      .bindPopup(
+          (layer) =>
+          layer.feature.properties.size
+      )
+      .addTo(map);
+};
+
+//
+//const geojsonlayer = L.geoJSON(object, {
+//  style: function (feature) {
+//    return {
+//      color: feature.properties.color || "red",
+//      weight: 7,
+//      opacity: 1,
+//      fillOpacity: 0.7,
+//    };
+//  },
+//  pointToLayer: (feature, latlng) => {
+//    if (feature.properties.type === "Point") {
+//      return new L.circleMarker(latlng, {
+//        radius: 20,
+//      });
+//    }
+//  },
+//  onEachFeature: function (feature, layer) {},
+//});
+
 
 map.on("moveend", render_markers);
+
+// from Simple Tutorial
+// CIRCLE MARKERS
+//function addDataToMap(mydata, map) {
+//    var dataLayer = L.geoJson(mydata, {
+//        // Convert default markers to circle
+//        pointToLayer: function (feature, latlng) {
+//
+//            // Observe how you define the radius sixe dependent on magnitude data
+//            var geojsonMarkerOptions = {
+//                radius: feature.properties.magnitude * 3,
+//                fillColor: "#ff7800",
+//                color: "#000",
+//                weight: 1,
+//                opacity: 1,
+//                fillOpacity: 0.6
+//            };
+//            return L.circleMarker(latlng, geojsonMarkerOptions);
+//        },
+//        // Give each feature a popup
+//        onEachFeature: function(feature, layer) {
+//
+//            var popupText = "Magnitude: " + feature.properties.magnitude + "<br>Location: " + feature.properties.country ;
+//
+//            layer.bindPopup(popupText); },
+//
+//        });
+//
+//    dataLayer.addTo(map);
+//    }
+//
+////var ourdata = '{% url "mydata" %}';
+////
+//$.getJSON(ourdata, function(mydata) { addDataToMap(mydata, map); });

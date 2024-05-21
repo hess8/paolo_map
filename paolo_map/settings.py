@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-import os
+import os,sys
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -37,7 +37,6 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     "paolo_map",
-    # "markers",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -96,8 +95,17 @@ DATABASES = {
         'PASSWORD': os.getenv("PASSWORD"),
         'HOST': 'localhost',
         'PORT': 5432,
+        'TEST': {
+            'ENGINE': 'django.contrib.gis.db.backends.postgis',
+            'NAME': 'paolo_test',
+            'USER': os.getenv("USER"),
+            'PASSWORD': os.getenv("PASSWORD"),
+        },
     }
 }
+
+# if 'test' in sys.argv or 'test_coverage' in sys.argv: #Covers regular testing and django-coverage
+#     DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
 
 
 # Password validation
