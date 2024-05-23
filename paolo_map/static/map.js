@@ -7,7 +7,6 @@ const url =
 const layer = L.tileLayer(url, {
       attribution: copy,
       });
-
 const map = L.map("map", {
       layers: [layer],
       minZoom: 5,
@@ -51,7 +50,8 @@ async function render_markers() {
        return L.circleMarker(latlng, circleOptions)
       }
       }
-    L.geoJSON(markers,circle_marker)
+      // L.geoJSON(markers,circle_marker)
+    L.geoJSON(markers)
       .bindPopup(
           (layer) =>
           layer.feature.properties.size
