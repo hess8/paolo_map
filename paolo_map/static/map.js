@@ -4,14 +4,13 @@ const copy =
 const url =
 'http://services.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}'
 
-const layer = L.tileLayer(url, {
-      attribution: copy,
-      });
-
 const map = L.map("map", {
-      layers: [layer],
       minZoom: 5,
       });
+
+const tiles = L.tileLayer(url, {
+      attribution: copy,
+      }).addTo(map);
 
 map
   .locate()
