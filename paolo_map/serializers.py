@@ -4,6 +4,7 @@ from rest_framework_gis.serializers import (
 
 from .models import Marker
 
+
 class MarkerSerializer(
     GeoFeatureModelSerializer
 ):
