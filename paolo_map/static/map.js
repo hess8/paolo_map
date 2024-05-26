@@ -1,6 +1,8 @@
+import chroma from "chroma-js";
+
 let config = {
     minZoom: 5
-}
+};
 
 const copy =
   "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>";
@@ -41,21 +43,19 @@ async function load_markers() {
 async function render_markers() {
   let markers = await load_markers();
 
-  const circleOptions =
-    {
-      radius: 12, //feature.properties.size,
-      color: "red",
-      weight: 7,
-      opacity: 1,
-      fillOpacity: 0.7,
-    };
-
   const circle_marker = {
        pointToLayer: function (feature, latlng) {
-       return L.circleMarker(latlng, circleOptions)
+       return L.circleMarker(latlng, {
+//          radius: feature.properties.size,
+          radius: 12,
+          color: "red",
+          weight: 1,
+          opacity: .1,
+          fillOpacity: 0.7,
+        })
        }
       };
 
   L.geoJSON(markers,circle_marker).addTo(map);}
 
-  map.on("moveend", render_markers);
+map.on("moveend", render_markers);
