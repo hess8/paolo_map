@@ -1,5 +1,3 @@
-import chroma from "chroma-js";
-
 let config = {
     minZoom: 5
 };
