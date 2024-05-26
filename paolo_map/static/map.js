@@ -14,6 +14,10 @@ L.tileLayer(url, {
       attribution: copy,
       }).addTo(map);
 
+const tiles = L.tileLayer(url, {
+      attribution: copy,
+      }).addTo(map);
+
 map
   .locate()
   .on("locationfound", (e) =>
