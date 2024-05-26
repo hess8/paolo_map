@@ -5,7 +5,6 @@ from leaflet.admin import LeafletGeoAdmin
 # admin.site.register(Marker, admin.GISModelAdmin)
 # admin.site.register(Marker, LeafletGeoAdmin)
 
-
 class CustomGeoWidgetAdmin(admin.GISModelAdmin):
     gis_widget_kwargs = {
         'attrs': {
