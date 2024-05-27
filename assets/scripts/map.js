@@ -1,4 +1,5 @@
-import Chroma from 'chroma-js'
+import chroma from 'chroma-js'
+import '../styles/map.css'
 
 let config = {
     minZoom: 5
@@ -48,7 +49,7 @@ async function render_markers() {
        return L.circleMarker(latlng, {
 //          radius: feature.properties.size,
           radius: 12,
-          color: Chroma('#D4F880').darken().hex(),  // #a1c550,
+          color: chroma('#D4F880').darken().hex(),  // #a1c550,
           weight: 1,
           opacity: .1,
           fillOpacity: 0.7,
