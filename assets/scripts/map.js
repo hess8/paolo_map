@@ -13,9 +13,9 @@ const url =
 
 const map = L.map("map", config)
 
-L.tileLayer(url, {
-      attribution: copy,
-      }).addTo(map);
+//L.tileLayer(url, {
+//      attribution: copy,
+//      }).addTo(map);
 
 const tiles = L.tileLayer(url, {
       attribution: copy,
@@ -43,13 +43,16 @@ async function load_markers() {
 
 async function render_markers() {
   let markers = await load_markers();
-
+  var max_scale = 200;
+  var marker_scale = chroma.scale(['red', 'blue']).domain([1, max_scale], 'log');
   const circle_marker = {
+
        pointToLayer: function (feature, latlng) {
        return L.circleMarker(latlng, {
 //          radius: feature.properties.size,
           radius: 12,
-          color: chroma('#D4F880').darken().hex(),  // #a1c550,
+//          color:   // #a1c550,
+          color: marker_scale(feature.properties.size).hex(),
           weight: 1,
           opacity: .1,
           fillOpacity: 0.7,
@@ -57,6 +60,11 @@ async function render_markers() {
        }
       };
 
-  L.geoJSON(markers,circle_marker).addTo(map);}
+  L.geoJSON(markers,circle_marker)
+  .bindPopup(
+      (layer) =>
+        layer.feature.properties.size.toString()
+    )
+  .addTo(map);}
 
 map.on("moveend", render_markers);

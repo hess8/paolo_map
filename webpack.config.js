@@ -12,7 +12,7 @@ module.exports = {
         {
         test: /\.css/i, //regex
         use: {
-            'style-loader'
+            'style-loader' //these are external packages
             'css-loader'
             }
         }
