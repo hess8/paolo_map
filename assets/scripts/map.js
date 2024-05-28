@@ -44,7 +44,12 @@ async function load_markers() {
 async function render_markers() {
   let markers = await load_markers();
   var max_scale = 200;
-  var marker_scale = chroma.scale(['red', 'blue']).domain([1, max_scale], 'log');
+//  var colorLow = chroma('orange').desaturate().hex();
+//  var colorHi = chroma('yellow').desaturate().hex();
+  var colorLow = chroma('#fce703').hex();
+  var colorHi = chroma('red').hex();
+  var marker_scale = chroma.scale([colorLow,colorHi]).mode('rgb').domain([1, max_scale], 'log');
+//  var marker_scale = chroma.scale('OrRd').domain([1, max_scale], 'log').padding([0.2, 0]);
   const circle_marker = {
 
        pointToLayer: function (feature, latlng) {
@@ -54,8 +59,8 @@ async function render_markers() {
 //          color:   // #a1c550,
           color: marker_scale(feature.properties.size).hex(),
           weight: 1,
-          opacity: .1,
-          fillOpacity: 0.7,
+          opacity: 1,
+          fillOpacity: 0.4,
         })
        }
       };
