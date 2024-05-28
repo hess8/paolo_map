@@ -8,14 +8,15 @@ module.exports = {
     path: path.resolve(__dirname, 'paolo_map/static/'),
   },
   module: {
-    rules: {
+    rules: [
         {
         test: /\.css/i, //regex
-        use: {
-            'style-loader' //these are external packages
+        use: [
+            'style-loader', //these are external packages
             'css-loader'
-            }
+            ]
         }
-    }
+        ]
+
     }
 };
