@@ -8,24 +8,15 @@ let config = {
 const copy =
   "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>";
 // my code
-//const url =
-//'http://services.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}'
-//
-//const map = L.map("map", config)
-//
-//const tiles = L.tileLayer(url, {
-//attribution: copy,
-//}).addTo(map);
-//end my code
+const url =
+'http://services.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}'
 
-// my code with retina
-const url = 'http://services.arcgisonline.com/arcgis/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}'
 const map = L.map("map", config)
+
 const tiles = L.tileLayer(url, {
 attribution: copy,
-detectRetina: true
 }).addTo(map);
-//end my code with retina
+//end my code
 
 //Matlk section
 //const url = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}'
